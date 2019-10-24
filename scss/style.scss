@@ -1,0 +1,481 @@
+@import 'normalize.scss';
+@import 'fonts.scss';
+
+// == variables == 
+$screen-sm: 576px;
+$screen-md: 768px;
+$screen-lg: 992px;
+$screen-xl: 1200px;
+
+$screen-sm-max: 767px;
+$screen-md-max: 991px;
+$screen-lg-max: 1199px;
+
+
+// == /variables == 
+
+// == mixins == 
+@mixin section-inner{
+    width: 940px;
+    margin: 0 auto;
+}
+@mixin header-footer($sub-col,$num-color){
+    padding-top: 30px;
+    &-wrapper{
+        display: flex;
+        justify-content: space-around;
+        padding-bottom: 30px;
+        position: relative;
+    }
+    &__logo{
+        display: flex;
+        &__img{}
+        &__text{
+            margin-left: 14px;
+            &__name{
+                font-size: 20px;
+                font-weight: 700;
+                line-height: 22px;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+            }
+            &__subtitle{
+                color: $sub-col;
+                font-size: 11px;
+                font-weight: 300;
+                line-height: 22px;
+            }
+        }
+    }
+    &__communication{
+        display: flex;
+        flex-direction: column;
+        &__text{
+            color: $sub-col;
+            &__number{
+                color: $num-color;
+                font-size: 18px;
+                font-weight: 700;
+                line-height: 22px;
+                text-transform: uppercase;
+            }
+            &__subtitle{
+                color: $sub-col;
+                font-size: 11px;
+                font-weight: 400;
+                line-height: 22px;
+            }
+        }
+        &__button{
+            @include communication-btn;
+        }
+    }
+    @media (min-width:980px){
+        flex-direction: row;
+        &-wrapper{
+            justify-content: space-between;
+            flex-direction: row;
+            padding-bottom: 60px;
+        }
+    }
+}
+@mixin item-box($padding-t,$padding-r,$padding-b,$padding-l,$border-color) {
+    padding: $padding-t $padding-r $padding-b $padding-l;
+    border: 2px solid $border-color;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+    margin-bottom: 20px;
+    &:hover{
+        box-shadow: 0px 30px 36px 7px rgba(0,0,0,0.59);
+        transition: 1s;
+    }
+    
+    &__img{
+        margin-bottom: 45px;
+        position: relative;
+        img{
+            margin: 0 auto;
+        }
+        &__label-sale{
+            position: absolute;
+            color: #ffffff;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            background: #ff0000;
+            padding: 7px 15px;
+            top: 10px;
+            left: 10px;
+        }
+    }
+    &__title{
+        color: #292929;
+        font-size: 15px;
+        font-weight: 700;
+        margin-bottom: 20px;
+    }
+    &__description{
+        color: #626262;
+        font-size: 13px;
+        font-weight: 300;
+        margin-bottom: 30px;
+    }
+    &__price{
+        color: #0f0f0f;
+        font-size: 16px;
+        font-weight: 700;
+        margin-bottom: 40px;
+    }
+    &__text{
+        color: #292929;
+        font-size: 12px;
+        font-weight: 300;
+        line-height: 18px;
+    }
+    &__prices{
+        margin-bottom: 40px;
+        .price_prev{
+            color: #979797;
+            font-size: 10px;
+            font-weight: 400;
+            text-decoration: line-through;
+        }
+        .price_sale{
+            color: #ff0000;
+            font-size: 16px;
+            font-weight: 700;
+        }
+    }
+    @media (min-width:980px) {
+        width: 100%;
+        justify-content: space-between;
+        &:last-child{
+            margin-right: 0px;
+        }
+        margin-bottom: 0;
+    }
+}
+@mixin start-btn{
+    color: #292929;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 22px;
+    text-decoration: none;
+}
+
+@mixin communication-btn{
+    @include start-btn
+    padding: 10px 25px;
+    border: 2px solid #292929;
+}
+@mixin black-btn{
+    padding: 15px 23px;
+    border: 2px solid #fff;
+    color: #fff;
+    background: #292929;
+}
+// == /mixins == 
+
+// == common == 
+body{
+    font-family: 'Gotham Pro';
+    color: #000;
+    font-size: 15px;
+}
+.section-inner{
+    @include section-inner;
+}
+.section-outer{
+}
+.btn_yellow{
+    @include start-btn;
+    padding: 20px 29px;
+    background: #ffd200;
+}
+.btn_main{
+    @include start-btn;
+    background: #ffd200;
+    padding: 20px 55px;
+}
+.title{
+    color: #292929;
+    font-size: 20px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+// == /common == 
+
+// == header == 
+.section-header{
+    @include header-footer(#969696,#292929);
+    background: #fff;
+    height: 100vh;
+    &__communication{
+        @media (min-width:980px){
+            flex-direction: row;
+            &__text{
+                margin-right: 30px;
+            }
+        }
+    }
+    &__nav{
+        display: none;
+        @media (min-width:931px) {
+            display: flex;
+            justify-content: center;
+            background: #ffcc00;
+            position: absolute;
+            top: 109px;
+            left: 50%;
+            margin-left: -469px;
+            a{
+                text-decoration: none;
+                font-size: 14px;
+                font-weight: 700;
+                color: #000;
+                text-align: center;
+            }
+            li{
+                background: #ffcc00;
+                list-style: none;
+                padding: 20px 44.9px;
+            }
+        }
+    }
+    &-main{
+        background: url(/img/header_bg.png) no-repeat;
+        background-position: bottom center;
+        padding-bottom: 140px;
+        padding-top: 160px;
+        &__text{
+            color: #fff;
+            &__title{
+                font-size: 36px;
+                font-weight: 700;
+                text-transform: uppercase;
+                margin-bottom: 40px;
+            }
+            &__subtitle{
+                font-size: 14px;
+                font-weight: 400;
+                line-height: 22px;
+                width: 25%;
+            }
+        }
+        &__buttons{
+            margin-top: 84px;
+            .division{
+                color: #fff;
+                margin-left: 30px;
+                margin-right: 10px;
+            }
+            &__btn{
+                color: #fff;
+                font-weight: 700;
+            }
+        }
+        @media (min-width:$screen-sm) {
+            text-align: center;
+            &__text{
+                &__subtitle{
+                    width: 100%;
+                }
+            }
+        }
+        @media (min-width:$screen-lg) {
+            text-align: left;
+            &__text{
+                &__subtitle{
+                    width: 25%;
+                }
+            }
+        }
+    }
+}
+// == /header == 
+
+// == section-stock ==
+.section-stock{
+    padding-top: 80px;
+    padding-bottom: 80px;
+    text-align: center;
+    &__title{
+        margin-bottom: 60px;
+    }
+    
+}
+.item-box-wrapper{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;    
+   @media (min-width:980px) {
+    flex-direction: row;   
+   }
+}
+.item-box{
+    @include item-box(52px,24px,36px,36px,#f6f6f6);
+    &__btn{}
+}
+// == /section-stock ==
+
+// == section-advantages ==
+.section-advantages{
+    text-align: center;
+    background: #f4f4f4;
+    padding-top: 77px;
+    padding-bottom: 80px;
+    &__title{
+        margin-bottom: 60px;
+    }
+    .advanatages__item-box{
+        @include item-box(42px,32px,43px,30px,#fff);
+        &:hover{
+            background: #fff;
+        }
+        margin-right: auto;
+    }
+}
+// == /section-advantages ==
+
+// == popular ==
+.section-popular{
+    text-align: center;
+    padding-top: 80px;
+    padding-bottom: 90px;
+    &__title{
+        margin-bottom: 60px;
+    }
+    .popular__item-box{
+        @include item-box(20px,15px,20px,15px,#f6f6f6);
+        margin-right: auto;
+        &:last-child{
+            margin-right: auto;
+        }
+    }
+}
+// == /popular == 
+
+// == service ==
+.section-service{
+    text-align: center;
+    padding-top: 80px;
+    padding-bottom: 80px;
+    background: #f4f4f4;
+    &__title{
+        margin-bottom: 60px;
+    }
+    .service__item-box{
+        img{
+            width: 200px;
+            height: 153px;
+        }
+    }
+    .service__item-box{
+        @include item-box(47px,39px,39px,62px,#fff);
+    }
+}
+// == /service == 
+// == section-map
+.section-map{
+    position: relative;
+    &__map{
+        height: 500px;
+        z-index: 5;
+    }
+    .info-box{
+        padding: 60px 80px 40px 60px;
+        z-index: 10;
+        position: absolute;
+        background: #ffffff;
+        top: 60px;
+        display: flex;
+        flex-direction: column;
+        width: 43%;
+        left: 53%;
+        @media (min-width:$screen-lg) {
+            width: 30%;
+        }
+        @media (min-width:$screen-lg) {
+            width: 30%;
+        }
+        &__sign{
+            margin-right: 20px;
+            font-size: 20px;
+        }
+        &__phone,&__location,&__mail{
+            display: flex;
+            margin-bottom: 40px;
+            color: #292929;
+            font-size: 14px;
+            align-self: flex-start
+        }
+        &__title{
+            margin-bottom: 55px;
+            align-self: flex-start;
+        }
+        &__phone{
+            &__numbers{
+                display: flex;
+                flex-direction: column;
+                &__number{
+                    margin-bottom: 20px;
+                    font-weight: 700;
+                    text-transform: uppercase;
+                    &:last-child{
+                        margin-bottom: 0px;
+                    }
+                }
+            }
+        }
+        &__location{
+            &__adress{
+                font-weight: 500;
+                width: 90%;
+            }
+        }
+        &__mail{
+            &__adress{
+                font-family: "Gotham Pro";
+                font-size: 14px;
+                font-weight: 400;
+                text-decoration: underline;
+            }
+        }
+    }
+}
+
+// == /section-map
+
+
+// == footer ==
+.section-footer{
+    background: #292929;
+    color: #fff;
+    @include header-footer(#fff,#fff);
+    &__logo{
+        flex-direction: column;
+    }
+    &__logo-side{
+        display: flex;
+        margin-bottom: 55px;
+    }
+    &__communication{
+        flex-direction: column;
+        &__button{
+            @include black-btn;
+        }
+        &__text{
+            margin-bottom: 25px;
+            &__number{
+                text-align: right;
+            }
+        }
+    }
+}
+// == /footer == 
+
+// == slider == 
+
+// == /slider == 
