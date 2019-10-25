@@ -356,7 +356,7 @@ body {
   font-size: 15px; }
 
 .section-inner {
-  width: 940px;
+  max-width: 940px;
   margin: 0 auto; }
 
 .btn_yellow {
@@ -465,7 +465,7 @@ body {
           list-style: none;
           padding: 20px 44.9px; } }
   .section-header-main {
-    background: url(/img/header_bg.png) no-repeat;
+    background: url(../img/header_bg.png) no-repeat;
     background-position: bottom center;
     padding-bottom: 140px;
     padding-top: 160px; }
