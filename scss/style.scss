@@ -70,6 +70,15 @@ $screen-lg-max: 1199px;
             @include communication-btn;
         }
     }
+    @media (max-width:550px) {
+        &-wrapper{
+            flex-direction: column;
+            align-items: center;
+        }
+        &__communication{
+            margin-top: 15px;
+        }
+    }
     @media (min-width:980px){
         flex-direction: row;
         &-wrapper{
@@ -148,9 +157,10 @@ $screen-lg-max: 1199px;
             font-weight: 700;
         }
     }
-    @media (min-width:980px) {
+    @media (max-width:768px){
         width: 100%;
-        justify-content: space-between;
+    }
+    @media (min-width:980px) {
         &:last-child{
             margin-right: 0px;
         }
@@ -179,6 +189,9 @@ $screen-lg-max: 1199px;
 // == /mixins == 
 
 // == common == 
+img{
+    max-width: 100%;
+}
 body{
     font-family: 'Gotham Pro';
     color: #000;
@@ -188,6 +201,9 @@ body{
     @include section-inner;
 }
 .section-outer{
+    @media (max-width:960px) {
+        padding: 0 20px;
+    }
 }
 .btn_yellow{
     @include start-btn;
@@ -195,6 +211,7 @@ body{
     background: #ffd200;
 }
 .btn_main{
+    max-width: 280px;
     @include start-btn;
     background: #ffd200;
     padding: 20px 55px;
@@ -211,7 +228,7 @@ body{
 .section-header{
     @include header-footer(#969696,#292929);
     background: #fff;
-    height: 100vh;
+    min-height: 100vh;
     &__communication{
         @media (min-width:980px){
             flex-direction: row;
@@ -222,27 +239,6 @@ body{
     }
     &__nav{
         display: none;
-        @media (min-width:931px) {
-            display: flex;
-            justify-content: center;
-            background: #ffcc00;
-            position: absolute;
-            top: 109px;
-            left: 50%;
-            margin-left: -469px;
-            a{
-                text-decoration: none;
-                font-size: 14px;
-                font-weight: 700;
-                color: #000;
-                text-align: center;
-            }
-            li{
-                background: #ffcc00;
-                list-style: none;
-                padding: 20px 44.9px;
-            }
-        }
     }
     &-main{
         background: url(../img/header_bg.png) no-repeat;
@@ -276,20 +272,45 @@ body{
                 font-weight: 700;
             }
         }
-        @media (min-width:$screen-sm) {
-            text-align: center;
+    }
+    @media (max-width:768px) {
+        &-main{
             &__text{
+                text-align: center;
                 &__subtitle{
-                    width: 100%;
+                    margin: auto;
+                    font-size: 15px;
+                    width: 80%;
                 }
             }
+            &__buttons{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
         }
-        @media (min-width:$screen-lg) {
-            text-align: left;
-            &__text{
-                &__subtitle{
-                    width: 25%;
-                }
+    }
+    @media (min-width:$screen-lg) {
+        &__nav{
+            display: none;
+            display: flex;
+            justify-content: center;
+            background: #ffcc00;
+            position: absolute;
+            top: 109px;
+            left: 50%;
+            margin-left: -469px;
+            a{
+                text-decoration: none;
+                font-size: 14px;
+                font-weight: 700;
+                color: #000;
+                text-align: center;
+            }
+            li{
+                background: #ffcc00;
+                list-style: none;
+                padding: 20px 44.9px;
             }
         }
     }
@@ -309,13 +330,12 @@ body{
 .item-box-wrapper{
     display: flex;
     justify-content: space-between;
-    flex-direction: column;    
-   @media (min-width:980px) {
-    flex-direction: row;   
-   }
+    @media (max-width:800px) {
+        flex-direction: column;
+    }
 }
 .item-box{
-    @include item-box(52px,24px,36px,36px,#f6f6f6);
+    @include item-box(30px,0,30px,0,#f6f6f6);
     &__btn{}
 }
 // == /section-stock ==
@@ -373,7 +393,7 @@ body{
         }
     }
     .service__item-box{
-        @include item-box(47px,39px,39px,62px,#fff);
+        @include item-box(20px,0,20px,0px,#fff);
     }
 }
 // == /service == 
@@ -385,62 +405,59 @@ body{
         z-index: 5;
     }
     .info-box{
-        padding: 60px 80px 40px 60px;
-        z-index: 10;
-        position: absolute;
-        background: #ffffff;
-        top: 60px;
-        display: flex;
-        flex-direction: column;
-        width: 43%;
-        left: 53%;
-        @media (min-width:$screen-lg) {
-            width: 30%;
-        }
-        @media (min-width:$screen-lg) {
-            width: 30%;
-        }
-        &__sign{
-            margin-right: 20px;
-            font-size: 20px;
-        }
-        &__phone,&__location,&__mail{
+        display: none;
+        @media (min-width:768px) {
+            padding: 40px 30px 40px 30px;
+            z-index: 10;
+            position: absolute;
+            background: #ffffff;
+            top: 60px;
             display: flex;
-            margin-bottom: 40px;
-            color: #292929;
-            font-size: 14px;
-            align-self: flex-start
-        }
-        &__title{
-            margin-bottom: 55px;
-            align-self: flex-start;
-        }
-        &__phone{
-            &__numbers{
+            flex-direction: column;
+            width: 43%;
+            left: 53%;width: 30%;
+            &__sign{
+                margin-right: 20px;
+                font-size: 20px;
+            }
+            &__phone,&__location,&__mail{
                 display: flex;
-                flex-direction: column;
-                &__number{
-                    margin-bottom: 20px;
-                    font-weight: 700;
-                    text-transform: uppercase;
-                    &:last-child{
-                        margin-bottom: 0px;
+                margin-bottom: 40px;
+                color: #292929;
+                font-size: 14px;
+                align-self: flex-start
+            }
+            &__title{
+                margin-bottom: 55px;
+                align-self: flex-start;
+            }
+            &__phone{
+                &__numbers{
+                    display: flex;
+                    flex-direction: column;
+                    &__number{
+                        margin-bottom: 20px;
+                        font-weight: 700;
+                        text-transform: uppercase;
+                        &:last-child{
+                            margin-bottom: 0px;
+                        }
                     }
                 }
             }
-        }
-        &__location{
-            &__adress{
-                font-weight: 500;
-                width: 90%;
+            &__location{
+                &__adress{
+                    font-weight: 500;
+                    width: 90%;
+                }
             }
-        }
-        &__mail{
-            &__adress{
-                font-family: "Gotham Pro";
-                font-size: 14px;
-                font-weight: 400;
-                text-decoration: underline;
+            &__mail{
+                &__adress{
+                    font-family: "Gotham Pro";
+                    font-size: 14px;
+                    font-weight: 400;
+                    text-decoration: underline;
+                }
             }
         }
     }
@@ -456,6 +473,9 @@ body{
     @include header-footer(#fff,#fff);
     &__logo{
         flex-direction: column;
+        &__site-name{
+           
+        }
     }
     &__logo-side{
         display: flex;
@@ -470,6 +490,23 @@ body{
             margin-bottom: 25px;
             &__number{
                 text-align: right;
+            }
+        }
+    }
+    @media (max-width:550px) {
+        &__logo{
+            &-side{
+                margin-bottom: 35px;
+            }
+            &__site-name{
+                margin: auto;
+            }
+        }
+        &__communication{
+            &__text{
+                &__number{
+                    text-align: center;
+                }
             }
         }
     }
